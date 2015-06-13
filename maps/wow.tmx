@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="RPGpack_sheet_2X" tilewidth="32" tileheight="32" tilecount="4160">
+  <image source="../img/RPGpack_sheet_2X.png" width="2560" height="1664"/>
+ </tileset>
+ <tileset firstgid="4161" name="overworld_1" tilewidth="32" tileheight="32" tilecount="40">
+  <image source="../img/overworld_1.png" width="336" height="144"/>
+ </tileset>
+ <tileset firstgid="4201" name="RPGpack_sheet" tilewidth="32" tileheight="32" tilecount="1040">
+  <image source="../img/RPGpack_sheet.png" width="1280" height="832"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztmtFx4zAMRNOBnWpclspxOS4nbdxkMphDEJIiQBBLWvh4c5lIsWQuiF1Id9w/Po6km2eyFK9kKb6Spbh9zmd2z434DlE8ApjtU2gP3gnSY2bPRXvwTpAeM3su2oN3IqLHoz14J2b0Pwnag3fC08u1Or0LnvUsZ050vtiRmfWMzhc7MjOHovPFjnh6+azPvgrevc/6uegcsgoeWYefRxlL6x2tz0fnnUhGvEGu4+v++/nVqPf0aHVFvjrWkdcyaaPpm1atrohGO/78StM3rVpdEY123vOl3KeJTrva+w+rBjIrJDrtvvXgXl5b216k1ldjtKfM7FdXZNT3aX8kPoz4PumBzh/vxOizl4fSb5I2I75/DP597TPPQOedmYxmgRl+3uNbSZna/DHT09CeuzKkS6SnoT13ZWhvRHoa2nNXRuOxqJ6K9uhINP6K7KdXQeOviH6K9tfo2tP4K6Kfov012svJX1ft92h/jfZyPg/O6vm9M2dpZkX7ayR8rTz9oaZPendfbyFfn9Xze/MA2k9XwPr/GTQ9vzcPoP10BfL94Frk+8F1IP9A79HkB9of6Nyd/EB6oHN38nf+8PakxPa+lnTx9qXEXsvf/3r6Ejqn7AyfB71A55Sd4X1r1nye9EP+kfhjqeWcz+cw4ufonvmOWDXM+XwOFg29fTwZyzRe80vyF4uGtKYI30rqRPtW0q7vaN9K5nk6Ose8G9yTEb0SnYNWg68NoldeAU0u4+sT3SvR3rlizfH1ie6VaO9cseb4+uwww+6GJV9F9sfRGXY3tPqN9r4r+bKlLrX6ee4dtHei8dDUundKoL0TjYem1r1TAu2daDw0bfmt9n7Q3hkB9RUP7y5Re39eu2YL9DuHWZBX8/xSOodj1bvVC7X3jfbT2T4tf24dG9G+JzfxPUW/Q/unB0fnOU/xs9RFnueZCUqa8D1F10T7pwc9OZM04+stMyU/5p0JWho9Pv9fE+2tHsjvVzuHjr/Eun0Vjo3cT69Go3PqqsgabPX0J1tvrsNTHBvNDt7z94xnEbOQNdj67i+23tI75LFZPAvXtXjSqsg+Uaop7gvyd9wvIjKmRUN0ZurJS7K3ynlP1iH1Ir4mcg6OvO/RfrASpbqTMxRfB+4LtP8PpgP9rXfms/gFuv/P2r98fW5sD5HX8L2lvX7P8xjrd0D3fwtnNSkzK88/tWzl1f8tn3OWjVenVI/S42vPgUgTuSa91z5bY4uXnM0vq8P7TMkvuA6lGpY+ovHOszVu+UdtL8n9uxtci5JflObEUs87q/fe+fvMxzV4zMjRfk61z3WQep3VM/d2z3y6SlaK9PPSMzhZI2f1/Dg5TvXu7fdRaxvp51T/XAfSh/ZOTz+mvd16Vqm9N+/aO4xrFO3nXAvyUfn8iXt/q9e2nlVq78279g7l9Uv9O8rTaZ9QHfHcVMq9tXpu1Zb2vrTr1tOvRtYnEt6v+c8y97bWqbQHRr6XtzcgM4EGuRfkcdmrWvXcqi3094zMSaMZi/drWVO99V07x+q93jUdmZNGMxbvQ9ITuL/0ZAOZ1aze28pYlj3gPW/O7Fe1OYPrpfE98nZr7jvuf2ujJwvXtN2xf5X8oSfnlvoSaXEb8I2z7NA7K2i0W5Gad2tmAz7DjNSHNguXztVotzIlv+6dDUiLkbr4B6Olgl0=
+  </data>
+ </layer>
+</map>
