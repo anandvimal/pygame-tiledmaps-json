@@ -41,10 +41,25 @@ class Initialize():
 
     def build(self):
         self.all_layers = []
+        self.sky_layers = []
         for layer in self.layers:
             current_layer = []
+            sky_flag = False
             data = layer["data"]
             index = 0
+
+            if "properties" in layer:
+                properties = layer["properties"]
+                #if "collision" in properties:
+                    #if properties["collision"] == "1":
+                        #collision_flag = True
+                        #current_collision_layer = []
+                if "sky" in properties:
+                    if properties["sky"] == "1":
+                        sky_flag = True
+                        current_sky_layer = []
+
+
             for y in range (0, layer["height"]):
                 for x in range(0, layer["width"]):
                     id_key = data[index]
@@ -53,14 +68,22 @@ class Initialize():
                         tile.rect = pygame.Rect(x*32, y*32, 32 ,32)
                         tile.image = self.all_tiles[id_key]
                         current_layer.append(tile)
+                        if sky_flag:
+                            current_sky_layer.append(tile)
                     index += 1
             self.all_layers.append(current_layer)
-        return self.all_layers
+            if sky_flag:
+                self.sky_layers.append(current_sky_layer)
+        return self.all_layers, self.sky_layers
 
 class Map():
     def __init__(self, initial):
         self.initial = initial
         self.all_layers = initial.all_layers
+
+        #self.collision_layers = initial.collision_layers
+        self.sky_layers = initial.sky_layers
+
         self.mapheight = initial.mapheight
         self.mapwidth = initial.mapwidth
         self.speed = 3
@@ -86,7 +109,6 @@ class Map():
             y -= self.speed
         self.move(x, y)
 
-
     def move(self, x = 0, y = 0):
         self.mapx += x
         self.mapy += y
@@ -97,16 +119,16 @@ class Map():
     def display(self, screen):
         for layer in self.all_layers:
             for tile in layer:
-                #print( tile )
+                screen.blit(tile.image, tile.rect)
+        screen.blit(self.player.image, self.player.rect)
+        for layer in self.sky_layers:
+            for tile in layer:
                 screen.blit(tile.image, tile.rect)
 
-        screen.blit(self.player.image, self.player.rect)
-
-
 class Player(pygame.sprite.Sprite):
+
     def __init__(self, center, filename):
         pygame.sprite.Sprite.__init__(self)
-
         try:
             self.image = pygame.image.load(filename).convert_alpha()
         except IOError:
@@ -116,6 +138,7 @@ class Player(pygame.sprite.Sprite):
 
 
 class Event():
+
     def __init__(self, initial):
         self.direction = "stop"
         self.initial = initial
