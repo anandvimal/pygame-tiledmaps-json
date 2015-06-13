@@ -6,12 +6,13 @@ class Tile(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
+
 class Initialize():
     def __init__(self, screen, testing, filename, player_image_file):
         try:
             with open(filename) as mapfile:
                 self.mapdict = json.loads(mapfile.read())
-                self.layers = mapdict["layers"]
+                self.layers = self.mapdict["layers"]
                 self.mapheight = self.layers[0]["height"] * 32
                 self.mapwidth = self.layers[0]["width"] * 32
         except IOError:
