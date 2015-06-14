@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="terrain_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="tilesets/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="classical_temple_tiles" tilewidth="32" tileheight="32" tilecount="768">
+  <image source="tilesets/classical_temple_tiles.png" width="1024" height="768"/>
+ </tileset>
+ <layer name="grass" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz0ERwCAQADGGKsG/LnzURrjZRwTkfGudIe5+Ww9LD0sPSw9LD0sPSw9LD0sPSw9LD0sPSw9LD0sPSw9LD0sPSw9LD0sPSw9LD8u0xwQ/wKM7CQ==
+  </data>
+ </layer>
+ <layer name="grasstop" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEKgDAQBMBA8HU2vsT/lxKwsInoQeQMM7DlwW5xpQDQs9d4Mon2ybYDuLeeP1uXZ7neZDLrjh47vjHrjr//x+ib0Vqn7WWy7ogEAAAAAAAyOgBcThXa
+  </data>
+ </layer>
+ <layer name="neo" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJgEAMRNFAKtetRK1EtzFTQY6ywnvwL3OaCAAAAAAAAACAf9gyYq9G9tvqjvp6Vlf22+ru+vpUM/sN4Csvt4ILmw==
+  </data>
+ </layer>
+ <layer name="objects" width="50" height="50">
+  <properties>
+   <property name="collision" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz8cRQVEAheGL9/Qh9iGuZG3I2pC1IWtDVoBS+K1tmDHeXHP+mW9/jjFKKaWU8rKcY0weBRRRQhkVVB2v171fja11NNBEC2100LXoR4+tfQwwxAhjTDC16MeMrXMssMQKa2ywtejHjq17HHDECWdccLXoxzOfa4wfAThwEXS9XvV5ITaHEUEUMcQt/JFgcxIppJFB1sIfSimllFJKKaWUUkr9ulvA6wXf6f4nP5RSSr32AHU0G8o=
+  </data>
+ </layer>
+ <layer name="above" width="50" height="50">
+  <properties>
+   <property name="sky" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz8sNQFAYROE/Ye3Rh7cylKIUPaASVIJSTAciFnKv8yVnP2MGAPirKDSLVaLS8Os1z2XanKtClapStWpU68ifzpGdd3pPfgye/AAAAAAAAAAAX4yB2aTm4Osl7yzav6rN8R+79h/qdPwHAMBvFy9RCgo=
+  </data>
+ </layer>
+</map>

@@ -220,7 +220,7 @@ def main():
     FPS = 20
 
     player_image_file = "img/boy.png"
-    map_file = "maps/smallsquare1.json"
+    map_file = "maps/demo.json"
 
     TESTING = True
 
