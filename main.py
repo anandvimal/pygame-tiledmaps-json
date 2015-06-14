@@ -2,7 +2,6 @@ import pygame
 import json
 import sys
 
-
 class Tile(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -128,6 +127,7 @@ class Map():
                     self.clear_move = False
 
     def clear_to_move(self):
+
         self.clear_move = True
 
         if self.direction == "left" and self.mapx + self.speed > 0:
