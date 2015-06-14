@@ -42,18 +42,25 @@ class Initialize():
     def build(self):
         self.all_layers = []
         self.sky_layers = []
+        self.collision_layers = []
+
+        collision_tinted_surface = pygame.Surface((32, 32))
+        collision_tinted_surface.fill((255, 0, 0))
+        collision_tinted_surface.set_alpha(0)
+
         for layer in self.layers:
             current_layer = []
             sky_flag = False
+            collision_flag = False
             data = layer["data"]
             index = 0
 
             if "properties" in layer:
                 properties = layer["properties"]
-                #if "collision" in properties:
-                    #if properties["collision"] == "1":
-                        #collision_flag = True
-                        #current_collision_layer = []
+                if "collision" in properties:
+                    if properties["collision"] == "1":
+                        collision_flag = True
+                        current_collision_layer = []
                 if "sky" in properties:
                     if properties["sky"] == "1":
                         sky_flag = True
@@ -70,20 +77,26 @@ class Initialize():
                         current_layer.append(tile)
                         if sky_flag:
                             current_sky_layer.append(tile)
+                        if collision_flag:
+                            collision_tile = Tile()
+                            collision_tile.image = collision_tinted_surface
+                            collision_tile.rect = tile.rect.copy()
+                            current_collision_layer.append(collision_tile)
                     index += 1
             self.all_layers.append(current_layer)
+            if collision_flag:
+                self.collision_layers.append(current_collision_layer)
             if sky_flag:
                 self.sky_layers.append(current_sky_layer)
-        return self.all_layers, self.sky_layers
+
+        return self.all_layers, self.sky_layers, self.collision_layers
 
 class Map():
     def __init__(self, initial):
         self.initial = initial
         self.all_layers = initial.all_layers
-
-        #self.collision_layers = initial.collision_layers
+        self.collision_layers = initial.collision_layers
         self.sky_layers = initial.sky_layers
-
         self.mapheight = initial.mapheight
         self.mapwidth = initial.mapwidth
         self.speed = 3
@@ -94,19 +107,55 @@ class Map():
         self.screen_width = initial.screen_rect.width
         self.screen_height = initial.screen_rect.height
 
+    def check_collision(self):
+        adjust = [0, 0]
+        if self.direction == "left":
+            adjust = [self.speed, 0]
+        elif self.direction == "right":
+            adjust = [0- self.speed, 0]
+        elif self.direction == "up":
+            adjust = [0, self.speed]
+        elif self.direction == "down":
+            adjust = [0, 0 - self.speed]
+
+        #here we check for collision.
+        for collision_layer in self.collision_layers:
+            tmp_list = []
+            tmp_list.extend(collision_layer)
+            for tile in tmp_list:
+                tmp_rect = tile.rect.move(adjust)
+                if tmp_rect.colliderect(self.player.rect):
+                    self.clear_move = False
+
+    def clear_to_move(self):
+        self.clear_move = True
+
+        if self.direction == "left" and self.mapx + self.speed > 0:
+            self.clear_move = True
+        if self.direction == "right" and self.mapx < self.screen_width - self.mapwidth - self.speed:
+            self.clear_move = True
+        if self.direction == "up" and self.mapy + self.speed > 0:
+            self.clear_move = True
+        if self.direction == "down" and self.mapy < self.screen_height - self.mapheight + self.speed:
+            self.clear_move = True
+        if self.clear_move:
+            self.check_collision()
+        return (self.clear_move)
+
 
     def update(self, direction):
         x = 0
         y = 0
         self.direction = direction
-        if direction == "right":
-            x -= self.speed
-        elif direction == "left":
-            x += self.speed
-        elif direction == "up":
-            y += self.speed
-        elif direction == "down":
-            y -= self.speed
+        if self.clear_to_move():
+            if direction == "right":
+                x -= self.speed
+            elif direction == "left":
+                x += self.speed
+            elif direction == "up":
+                y += self.speed
+            elif direction == "down":
+                y -= self.speed
         self.move(x, y)
 
     def move(self, x = 0, y = 0):
@@ -115,6 +164,9 @@ class Map():
         for current_layer in self.all_layers:
             for tile in current_layer:
                 tile.rect.move_ip(x, y)
+        for collision_layer in self.collision_layers:
+            for tile in collision_layer:
+                tile.rect.move_ip(x,y)
 
     def display(self, screen):
         for layer in self.all_layers:
@@ -168,7 +220,7 @@ def main():
     FPS = 20
 
     player_image_file = "img/boy.png"
-    map_file = "maps/smallsquare.json"
+    map_file = "maps/smallsquare1.json"
 
     TESTING = True
 
