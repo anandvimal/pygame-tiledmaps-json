@@ -1,6 +1,10 @@
 import pygame
 import json
 import sys
+import random
+import pygame.mixer
+import time
+
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self):
@@ -218,7 +222,8 @@ def main():
     pygame.display.set_caption("Welcome to the mapreader.")
 
     FPS = 20
-
+    pygame.mixer.music.load("age.ogg")
+    pygame.mixer.music.play(-1)
     player_image_file = "img/boy.png"
     map_file = "maps/demo.json"
 
